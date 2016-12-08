@@ -1,5 +1,5 @@
-FROM openjdk:9-jdk
+FROM openjdk:8-jdk
 MAINTAINER Paul Ganea <paul@paulganea.io>
-RUN mkdir -p /burp/src && mkdir -p /burp/build && mkdir -p /tmp/burp
+RUN mkdir -p /burp/src && mkdir -p /burp/build
 WORKDIR /burp
-CMD javac -d /tmp/burp src/*.java &&  jar cf build/burpextender.jar /tmp/burp
+CMD javac -d build src/burp/*.java  && jar -cf bin/burpextender.jar -C build burp
