@@ -1,0 +1,25 @@
+tora:
+ build: .
+torb:
+ build: .
+torc:
+ build: .
+tord:
+ build: .
+haproxy:
+ image: haproxy:latest
+ volumes:
+ - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+ links:
+  - tora
+  - torb
+  - torc
+  - tord
+ ports:
+  - "8118:8118"
+  - "9050:9050"
+  - "70:70"
+ expose:
+  - "8118"
+  - "9050"
+  - "70"
